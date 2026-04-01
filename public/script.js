@@ -13,6 +13,7 @@
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     const navLinks = document.querySelectorAll('.nav-link');
+    const contactForm = document.getElementById('contactForm');
     const revealElements = document.querySelectorAll('.skill-category, .timeline-item, .project-card, .contact-card');
 
     // ===================================
@@ -110,6 +111,27 @@
         revealElements.forEach(element => {
             element.classList.add('reveal');
         });
+    }
+
+    // ===================================
+    // Contact Form
+    // ===================================
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+
+        const subject = encodeURIComponent(data.subject || 'Portfolio Contact');
+        const body = encodeURIComponent(
+            `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
+        );
+
+        window.location.href = `mailto:arielhenriquez17@hotmail.com?subject=${subject}&body=${body}`;
+
+        showNotification('Opening your email client...', 'success');
+        contactForm.reset();
     }
 
     // ===================================
@@ -377,6 +399,10 @@
             link.addEventListener('click', smoothScroll);
         });
         
+        if (contactForm) {
+            contactForm.addEventListener('submit', handleFormSubmit);
+        }
+
         // Initialize components
         initRevealElements();
         initTypingEffect();
