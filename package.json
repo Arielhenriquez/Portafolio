@@ -1,5 +1,14 @@
 {
+  "name": "ariel-henriquez-portfolio",
+  "version": "1.0.0",
+  "description": "Premium dark-mode developer portfolio",
+  "scripts": {
+    "dev": "npx serve public -p 3000",
+    "start": "npx serve public -p 3000",
+    "build": "echo 'Static site - no build required'"
+  },
   "dependencies": {
-    "firebase": "^10.13.2"
+    "firebase": "^10.13.2",
+    "serve": "^14.2.1"
   }
 }
